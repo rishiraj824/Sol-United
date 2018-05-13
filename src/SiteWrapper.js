@@ -39,7 +39,7 @@ class SiteWrapper extends React.Component<Props, void> {
             <div className="d-flex order-lg-2 ml-auto">
               <Nav.Item type="div" className="d-none d-md-flex">
                 <Button
-                  href="https://github.com/rishiraj824/innogy-hack"
+                  href="https://github.com/rishiraj824/Sol-United"
                   target="_blank"
                   outline
                   size="sm"
@@ -85,7 +85,7 @@ class SiteWrapper extends React.Component<Props, void> {
                   <Nav.Item
                     icon="file-text"
                     value="View Source of Frontend"
-                    to="https://github.com/rishiraj824/innogy-hack"
+                    to="https://github.com/rishiraj824/Sol-United"
                   />
                   <Nav.Item
                     icon="file-text"
