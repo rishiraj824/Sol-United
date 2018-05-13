@@ -39,7 +39,8 @@ state = {
     grossPercentProduced: 0,
     latestPercentConsumed: 0,
     latestPercentProduced: 0,
-    profit: 0
+    profit: 0,
+    grossProfit: 0
 }
 
 async componentDidMount() {
@@ -77,6 +78,7 @@ async componentDidMount() {
     let latestPercentConsumed = (lastConsumed - consumptions[consumptions.length - 2]) * 100 / consumptions[consumptions.length - 2];
     let latestPercentProduced = (lastProduced - productions[productions.length - 2]) * 100 / productions[productions.length - 2];
     let profit = parseInt((lastProduced - lastConsumed) * 0.33);
+    let grossProfit = parseInt((grossProduced - grossConsumed) * 0.33);
 
     this.setState({
       sellers: sellers,
@@ -92,6 +94,7 @@ async componentDidMount() {
       excess: excess,
       deficit: deficit,
       profit: profit,
+      grossProfit: grossProfit,
       grossPercentConsumed: parseInt(grossPercentConsumed),
       grossPercentProduced: parseInt(grossPercentProduced),
       latestPercentConsumed: parseInt(latestPercentConsumed),
@@ -101,7 +104,7 @@ async componentDidMount() {
 }
 
 render(){
-  const header = `Dashboard - Address (${this.state.accounts.slice(0,15)}...)`;
+  const header = `Dashboard - Your Address (${this.state.accounts.slice(0,15)}...)`;
   return (
     <SiteWrapper>
       <Page.Content title={header}>
@@ -267,15 +270,23 @@ render(){
                   </Card.Body>
                 </Card>
               </Grid.Col>
-              <Grid.Col sm={12}>
-                <ProgressCard
-                  header="Today's profit ($)"
-                  content={this.state.profit}
-                  progressColor="green"
-                  progressWidth={54}
-                />
-              </Grid.Col>
             </Grid.Row>
+          </Grid.Col>
+            <Grid.Col sm={6}>
+              <ProgressCard
+                header="Latest Profit ($)"
+                content={this.state.profit}
+                progressColor="green"
+                progressWidth={54}
+              />
+            </Grid.Col>
+            <Grid.Col sm={6}>
+              <ProgressCard
+                header="Gross Profit ($)"
+                content={this.state.grossProfit}
+                progressColor="green"
+                progressWidth={74}
+              />
           </Grid.Col>
           <Grid.Col sm={6} lg={4}>
             <StampCard
