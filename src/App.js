@@ -76,7 +76,7 @@ async componentDidMount() {
     let grossPercentProduced = (grossProduced - lastProduced)*100 / grossProduced;
     let latestPercentConsumed = (lastConsumed - consumptions[consumptions.length - 2]) * 100 / consumptions[consumptions.length - 2];
     let latestPercentProduced = (lastProduced - productions[productions.length - 2]) * 100 / productions[productions.length - 2];
-    let profit = productions[productions.length - 1] - consumptions[consumptions.length - 1] * 0.33;
+    let profit = parseInt((lastProduced - lastConsumed) * 0.33);
 
     this.setState({
       sellers: sellers,
@@ -247,13 +247,13 @@ render(){
                         ],
                         type: "donut", // default type of chart
                         colors: {
-                          data1: colors["blue"],
-                          data2: colors["green"],
+                          data1: colors["green"],
+                          data2: colors["blue"],
                         },
                         names: {
                           // name of each serie
-                          data1: "Produced",
-                          data2: "Consumed",
+                          data1: "Consumed",
+                          data2: "Produced",
                         },
                       }}
                       legend={{

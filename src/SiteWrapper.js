@@ -89,7 +89,7 @@ class SiteWrapper extends React.Component<Props, void> {
                   />
                   <Nav.Item
                     icon="file-text"
-                    value="View Source of Frontend"
+                    value="View Source of Contracts"
                     to="https://github.com/shubhang-arora/Sol-United"
                   />
                 </Nav>
