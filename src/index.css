@@ -27,3 +27,6 @@ body {
 .minHeight{
   min-height: 140px;
 }
+.minCardHeight{
+  min-height: 500px;
+}

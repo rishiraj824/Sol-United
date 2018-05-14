@@ -33,9 +33,9 @@ class Home extends Component {
                         <Button
                             href="/dashboard"
                             outline
-                            size="md"
+                            size="lg"
                             RootComponent="a"
-                            color="primary">
+                            color="danger">
                         View Dashboard
                         </Button>
                     </div>
@@ -64,6 +64,16 @@ class Home extends Component {
                         <Card.Body>
                             <Header.H4>A disruptive technology that creates a new revenue stream for Innogy.</Header.H4>
                         </Card.Body>
+                        </Card>
+                    </Grid.Col>
+                </Grid.Row>
+                <Header.H2 className="center">How it Works? Here's a walkthrough</Header.H2>
+                <Grid.Row>
+                    <Grid.Col md={12} className="center minCardHeight">
+                        <Card>
+                            <Card.Body>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/dSjtAlVLmoo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </Card.Body>
                         </Card>
                     </Grid.Col>
                 </Grid.Row>
