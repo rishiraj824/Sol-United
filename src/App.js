@@ -114,7 +114,7 @@ render(){
             <StatsCard layout={1} movement={this.state.grossPercentProduced} total={this.state.grossProduced} label="Gross Units Produced" />
           </Grid.Col>
           <Grid.Col width={6} sm={3} lg={3}>
-            <StatsCard layout={1} movement={this.state.grossPercentConsumed} total={this.state.grossConsumed} label="Units Units Consumed" />
+            <StatsCard layout={1} movement={this.state.grossPercentConsumed} total={this.state.grossConsumed} label="Gross Units Consumed" />
           </Grid.Col>
           <Grid.Col width={6} sm={3} lg={3}>
             <StatsCard
