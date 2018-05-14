@@ -22,12 +22,14 @@ class Home extends Component {
                         <img src="/logo.png" alt="solunited" />
                         <Header.H6>Power To You.</Header.H6>
                         <Header.H4>Sol-United is a B2C solution for Innogy where Innogy’s Customers are Producers and Consumers of Power.</Header.H4>
+                        <Header.H5>Instructions:</Header.H5>
                         <List unstyled>
                             <List.Item>1. Install <a target="_blank" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en">MetaMask Chrome Extension</a></List.Item>
                             <List.Item>2. Click on Create Vault, add a Password and Login. Please remember your password :D </List.Item>
                             <List.Item>3. Select <b>Rinkeby Test Network</b> as shown in the screenshot and then click the button below - "View Dashboard"</List.Item>
                         </List>
                         <div className="img-container"><img className="screenshot" src="/images/screenshot.png" alt="screenshot" /></div>
+                        <Header.H6><b>Disclaimer:</b> This network is just for testing purposes. The functionality and the transactions will still be the same in the final product.</Header.H6>
                         <Button
                             href="/dashboard"
                             outline
