@@ -3,3 +3,27 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.header-logo{
+  text-align: center;
+  margin: 50px;
+}
+.header-logo h4{
+  margin-top: 26px !important;
+}
+.screenshot{
+  max-width: 200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.img-container{
+  margin: 20px 0;
+}
+.center{
+  text-align: center;
+}
+.margin-10{
+  margin: 10px 0;
+}
+.minHeight{
+  min-height: 140px;
+}

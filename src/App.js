@@ -12,6 +12,7 @@ import {
   Table,
   colors,
   StampCard,
+  Header,
   StatsCard,
   ProgressCard
 } from "tabler-react";
@@ -77,8 +78,8 @@ async componentDidMount() {
     let grossPercentProduced = (grossProduced - lastProduced)*100 / grossProduced;
     let latestPercentConsumed = (lastConsumed - consumptions[consumptions.length - 2]) * 100 / consumptions[consumptions.length - 2];
     let latestPercentProduced = (lastProduced - productions[productions.length - 2]) * 100 / productions[productions.length - 2];
-    let profit = parseInt((lastProduced - lastConsumed) * 0.33);
-    let grossProfit = parseInt((grossProduced - grossConsumed) * 0.33);
+    let profit = parseInt((lastProduced - lastConsumed) * 0.4);
+    let grossProfit = parseInt((grossProduced - grossConsumed) * 0.4);
 
     this.setState({
       sellers: sellers,
@@ -100,41 +101,41 @@ async componentDidMount() {
       latestPercentConsumed: parseInt(latestPercentConsumed),
       latestPercentProduced: parseInt(latestPercentProduced)
     })
-    console.log(this.state);
 }
 
 render(){
-  const header = `Dashboard - Your Address (${this.state.accounts.slice(0,15)}...)`;
+  const header = `Dashboard - Hello there! (Your Address ${this.state.accounts.slice(0,15)}...)`;
   return (
     <SiteWrapper>
       <Page.Content title={header}>
+        <Header.H2>All Time Units (Produced by 6 Panels)</Header.H2>
         <Grid.Row cards={true}>
           <Grid.Col width={6} sm={3} lg={3}>
-            <StatsCard layout={1} movement={this.state.grossPercentProduced} total={this.state.grossProduced} label="Units Gross Produced" />
+            <StatsCard layout={1} movement={this.state.grossPercentProduced} total={this.state.grossProduced} label="Gross Units Produced" />
           </Grid.Col>
           <Grid.Col width={6} sm={3} lg={3}>
-            <StatsCard layout={1} movement={this.state.grossPercentConsumed} total={this.state.grossConsumed} label="Units Gross Consumed" />
-          </Grid.Col>
-          <Grid.Col width={6} sm={3} lg={3}>
-            <StatsCard
-              layout={1}
-              movement={this.state.latestPercentConsumed}
-              total={this.state.lastConsumed}
-              label="Latest Consumed"
-            />
+            <StatsCard layout={1} movement={this.state.grossPercentConsumed} total={this.state.grossConsumed} label="Units Units Consumed" />
           </Grid.Col>
           <Grid.Col width={6} sm={3} lg={3}>
             <StatsCard
               layout={1}
               movement={this.state.latestPercentProduced}
               total={this.state.lastProduced}
-              label="Latest Produced"
+              label="Units Produced Yesterday"
             />
           </Grid.Col>
-          <Grid.Col lg={6}>
+          <Grid.Col width={6} sm={3} lg={3}>
+            <StatsCard
+              layout={1}
+              movement={this.state.latestPercentConsumed}
+              total={this.state.lastConsumed}
+              label="Units Consumed Yesterday"
+            />
+          </Grid.Col>
+          <Grid.Col lg={12}>
             <Card>
               <Card.Header>
-                <Card.Title>My Transactions</Card.Title>
+                <Card.Title>You Daily Transactions</Card.Title>
               </Card.Header>
               <C3Chart
                 style={{ height: "10rem" }}
@@ -214,67 +215,26 @@ render(){
                   <Table.Row>
                     <Table.ColHeader>Seller</Table.ColHeader>
                     <Table.ColHeader>Buyer</Table.ColHeader>
-                    <Table.ColHeader>Units</Table.ColHeader>
+                    <Table.ColHeader>Units Sold</Table.ColHeader>
                     <Table.ColHeader>Date</Table.ColHeader>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
                   {this.state.transactions && this.state.transactions.map((transaction,i)=>{
                     return <Table.Row key={i}>
-                    <Table.Col alt={transaction.seller}>{transaction.seller.slice(0,18)}...</Table.Col>
-                    <Table.Col alt={transaction.buyer}>{transaction.buyer.slice(0,18)}...</Table.Col>
+                    <Table.Col alt={transaction.seller}>{transaction.seller}...</Table.Col>
+                    <Table.Col alt={transaction.buyer}>{transaction.buyer}...</Table.Col>
                     <Table.Col>{transaction.transaction}</Table.Col>
-                    <Table.Col>Day {++i}</Table.Col>
+                    <Table.Col>{++i+9}/05/18</Table.Col>
                   </Table.Row>
                   })}
                 </Table.Body>
               </Table>
             </Card>
           </Grid.Col>
-
-          <Grid.Col md={6}>
-            <Grid.Row>
-              <Grid.Col sm={12}>
-                <Card>
-                  <Card.Header>
-                    <Card.Title>Production/Consumption</Card.Title>
-                  </Card.Header>
-                  <Card.Body>
-                    <C3Chart
-                      style={{ height: "12rem" }}
-                      data={{
-                        columns: [
-                          // each columns data
-                          ["data1", this.state.lastConsumed],
-                          ["data2", this.state.lastProduced],
-                        ],
-                        type: "donut", // default type of chart
-                        colors: {
-                          data1: colors["green"],
-                          data2: colors["blue"],
-                        },
-                        names: {
-                          // name of each serie
-                          data1: "Consumed",
-                          data2: "Produced",
-                        },
-                      }}
-                      legend={{
-                        show: false, //hide legend
-                      }}
-                      padding={{
-                        bottom: 0,
-                        top: 0,
-                      }}
-                    />
-                  </Card.Body>
-                </Card>
-              </Grid.Col>
-            </Grid.Row>
-          </Grid.Col>
             <Grid.Col sm={6}>
               <ProgressCard
-                header="Latest Profit ($)"
+                header="Latest Profit (EUR)"
                 content={this.state.profit}
                 progressColor="green"
                 progressWidth={54}
@@ -282,7 +242,7 @@ render(){
             </Grid.Col>
             <Grid.Col sm={6}>
               <ProgressCard
-                header="Gross Profit ($)"
+                header="Gross Profit (EUR)"
                 content={this.state.grossProfit}
                 progressColor="green"
                 progressWidth={74}
